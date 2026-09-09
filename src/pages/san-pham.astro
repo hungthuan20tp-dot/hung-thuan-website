@@ -1,0 +1,315 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ColorSwatches from "../components/ColorSwatches.astro";
+
+const products = [
+  {
+    code: "LIN-01",
+    tag: "LINEN",
+    name: "Linen tưng premium",
+    spec: "100% Linen · 1.4m · 180gsm",
+    desc: "Vải linen cao cấp với độ rủ tự nhiên và bề mặt thô mộc đặc trưng. Thấm hút mồ hôi xuất sắc, lý tưởng cho thời tiết nhiệt đới.",
+    // Ảnh đầu tiên = ảnh chính hiển thị trên thẻ. Thêm bao nhiêu ảnh cũng được (ví dụ: ảnh vải, ảnh bảng màu, ảnh ứng dụng thực tế).
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuChagJdhqXt9hhoAA5HgEX53Ay9Rd6EUwvb3G3yf0HV4vANh68pkHyaq2liIbte_eYbiz_mbbIpR7N-4X_MK4TR6ni7RTc61zf2chuZTfhwE363rNW1obvMcaYqdU7F-QmkdkdL499fLZ4Ha0V0O3ljdW4PelATjiiXjjtOPWqqVi7CM-RVZMUDL4M_z49vXn-kysv9tQy3L8jUbFnzSxk-oWMeoFytrdVDCEpgJWQljzyTiyTZjuU",
+    ],
+    tags: [
+      { icon: "apparel", label: "Váy suông" },
+      { icon: "styler", label: "Áo sơ mi" },
+      { icon: "table_restaurant", label: "Khăn trải bàn" },
+    ],
+  },
+  {
+    code: "SIL-04",
+    tag: "LỤA",
+    name: "Lụa tơ tằm nguyên bản",
+    spec: "100% Silk · 1.2m · 80gsm",
+    desc: "Mềm mại, nhẹ nhàng và bóng bẩy. Lụa tơ tằm mang lại cảm giác sang trọng tuyệt đối khi chạm vào da.",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAjabn93vtMditnzDXhivdBn3N2x7_YblZlWpc_kO-TIrCiy-3SCrX51aBPvBKAJi2atKhE9I7liDs53o0ETSyJmKUl2D7LihjX4C-j055dZSfpOyLWw_qk9HBRdvsg5S_ieAWN1XI3J5vY69ClaSuGA_ZvhvElvaKTUZQP0nJj9czo9x-6sVkSspIDMGQMhqV2efQ9h_4_8QR5gVe3YZg2KV7koPfV5MEpRkWsK_eoNj8Vs-g658k",
+    ],
+    tags: [
+      { icon: "styler", label: "Áo dài" },
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+    ],
+  },
+  {
+    code: "REN-01",
+    tag: "REN",
+    name: "Ren hoa cúc đính cườm",
+    spec: "Khổ 1.4m",
+    desc: "Ren đính cườm hoa cúc tinh xảo, phù hợp làm váy dạ hội, viền váy cưới hoặc các chi tiết trang trí.",
+    // Ảnh gốc chụp bằng iPhone 15 Pro (~7.4MB), đã resize + nén còn ~600KB để web tải nhanh.
+    images: ["/images/ren/REN-01.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "favorite", label: "Viền váy cưới" },
+      { icon: "shopping_bag", label: "Trang trí" },
+    ],
+    // Mã màu tra trong src/data/colors.ts — thêm/bớt mã ở đây khi có thêm màu mới.
+    colors: ["01", "02", "03", "04", "05", "06", "07", "08"],
+  },
+  {
+    code: "REN-02",
+    tag: "REN",
+    name: "Ren mỏng kim sa",
+    spec: "Khổ 1.5m",
+    desc: "Ren mỏng nhẹ, rắc kim sa lấp lánh tinh tế, họa tiết hoa thêu nổi tinh xảo trên nền lưới mềm mại. Thích hợp may váy dạ hội, áo choàng ngoài hoặc phối lớp tạo điểm nhấn sang trọng.",
+    images: ["/images/ren/REN-02.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "styler", label: "Áo choàng ngoài" },
+      { icon: "layers", label: "Phối lớp trang trí" },
+    ],
+    colors: ["09", "25", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"],
+  },
+  {
+    code: "REN-03",
+    tag: "REN",
+    name: "Ren thêu vòng hoa cúc",
+    spec: "Khổ 1.4m",
+    desc: "Họa tiết hoa cúc thêu chỉ vòng tinh tế trên nền lưới tối màu, tạo hiệu ứng tương phản nổi bật. Thích hợp may váy dạ hội, áo choàng hoặc điểm nhấn phối lớp.",
+    images: ["/images/ren/REN-03.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "styler", label: "Áo choàng" },
+      { icon: "layers", label: "Phối lớp" },
+    ],
+    colors: ["08", "29", "25"],
+  },
+  {
+    code: "REN-04",
+    tag: "REN",
+    name: "Ren hoa nổi 3D đa sắc",
+    spec: "Khổ 1.4m",
+    desc: "Ren nền lưới kim cương đính hoa vải 3D nổi khối, mềm mại và có chiều sâu. Đa dạng màu sắc, phù hợp làm váy dạ hội, áo cưới hoặc chi tiết trang trí cao cấp.",
+    images: ["/images/ren/REN-04.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "favorite", label: "Váy cưới" },
+      { icon: "shopping_bag", label: "Trang trí" },
+    ],
+    colors: ["08", "25", "28", "05", "29"],
+  },
+  {
+    code: "REN-05",
+    tag: "REN",
+    name: "Ren thêu hoa nổi cành lá",
+    spec: "Khổ 1.4m",
+    desc: "Vải ren thêu hoa văn cành lá nổi khối dày dặn, đường chỉ thêu sắc nét tạo cảm giác sang trọng cổ điển. Thích hợp may váy cưới, váy dạ hội cao cấp.",
+    images: ["/images/ren/REN-05.jpg"],
+    tags: [
+      { icon: "favorite", label: "Váy cưới" },
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "styler", label: "Áo choàng" },
+    ],
+    colors: ["21", "08", "29", "06", "25"],
+  },
+  {
+    code: "REN-06",
+    tag: "REN",
+    name: "Ren hoa nổi hạt kết",
+    spec: "Khổ 1.4m",
+    desc: "Hoa văn nổi khối với tâm hoa dạng hạt kết tinh tế, nền lưới màu be ấm áp. Phù hợp làm váy dạ hội, áo choàng ngoài hoặc trang trí thủ công.",
+    images: ["/images/ren/REN-06.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "styler", label: "Áo choàng" },
+      { icon: "shopping_bag", label: "Trang trí" },
+    ],
+    colors: ["29", "08", "25"],
+  },
+  {
+    code: "REN-07",
+    tag: "REN",
+    name: "Ren sa tanh thêu hoa đính sequin",
+    spec: "Khổ 1.4m",
+    desc: "Nền vải ánh sa tanh mềm mại, thêu hoa văn nổi kết hợp đính sequin lấp lánh tinh tế. Thích hợp may váy dạ hội sang trọng hoặc áo dài cách tân.",
+    images: ["/images/ren/REN-07.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "styler", label: "Áo dài cách tân" },
+      { icon: "shopping_bag", label: "Trang trí" },
+    ],
+    colors: ["08", "29", "20", "28", "25"],
+  },
+  {
+    code: "REN-08",
+    tag: "REN",
+    name: "Ren hoa hồng viền vỏ sò Pháp",
+    spec: "Khổ 1.4m",
+    desc: "Ren hoa hồng kiểu Pháp cổ điển với đường viền vỏ sò tinh xảo. Phù hợp làm váy cưới, viền váy dạ hội hoặc phụ kiện cao cấp.",
+    images: ["/images/ren/REN-08.jpg"],
+    tags: [
+      { icon: "favorite", label: "Váy cưới" },
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "shopping_bag", label: "Viền trang trí" },
+    ],
+    colors: ["29", "08", "25"],
+  },
+  {
+    code: "REN-09",
+    tag: "REN",
+    name: "Ren chỉ kim tuyến",
+    spec: "Khổ 1.4m",
+    desc: "Ren nền trắng điểm xuyết chỉ kim tuyến vàng lấp lánh, tạo điểm nhấn sang trọng tinh tế. Thích hợp may váy dạ hội hoặc áo choàng dịp lễ.",
+    images: ["/images/ren/REN-09.jpg"],
+    tags: [
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "styler", label: "Áo choàng" },
+      { icon: "shopping_bag", label: "Trang trí" },
+    ],
+    colors: ["29", "25"],
+  },
+  {
+    code: "REN-10",
+    tag: "REN",
+    name: "Ren hoa nổi 3D bồng bềnh",
+    spec: "Khổ 1.4m",
+    desc: "Hoa vải 3D xếp lớp cánh bồng bềnh, tạo hiệu ứng nổi khối ấn tượng trên nền ren mềm mại. Thích hợp làm váy dạ hội, váy cưới hoặc điểm nhấn thời trang cao cấp.",
+    images: ["/images/ren/REN-10.jpg"],
+    tags: [
+      { icon: "favorite", label: "Váy cưới" },
+      { icon: "dry_cleaning", label: "Váy dạ hội" },
+      { icon: "shopping_bag", label: "Trang trí" },
+    ],
+    colors: ["08", "29", "25", "28"],
+  },
+];
+
+const filters = ["TẤT CẢ", "REN", "LỤA", "LINEN", "GẤM", "THUN", "VOAN", "TWEED", "KAKI"];
+---
+
+<Layout title="HƯNG THUẬN - Sản phẩm" current="products">
+  <div class="max-w-max-width mx-auto w-full px-margin-mobile md:px-margin-desktop py-32">
+    <header class="mb-16 text-center">
+      <h1 class="font-display-lg text-display-lg text-primary mb-4">Kho hàng sỉ &amp; lẻ</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        Khám phá bộ sưu tập vải đa dạng của chúng tôi. Giá cả được báo theo yêu cầu cụ thể qua Zalo hoặc điện thoại để đảm bảo mức chiết khấu tốt nhất cho số lượng của bạn.
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div class="mb-16 flex flex-wrap gap-3 justify-center" data-filter-bar>
+      {filters.map((label, i) => (
+        <button
+          type="button"
+          class="js-filter-btn px-6 py-2 font-label-caps text-label-caps rounded-full transition-colors duration-300 bg-surface-container text-on-surface-variant hover:bg-surface-container-high hover:text-primary data-[active=true]:bg-secondary data-[active=true]:text-on-secondary data-[active=true]:hover:bg-surface-tint"
+          data-filter={label}
+          data-active={i === 0 ? "true" : "false"}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+
+    <p class="js-filter-empty hidden text-center font-body-md text-body-md text-on-surface-variant mb-16">
+      Chưa có mẫu vải nào trong danh mục này. Vui lòng chọn danh mục khác hoặc liên hệ để được tư vấn thêm.
+    </p>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-filter-grid>
+      {products.map((product) => (
+        <article class="js-product-card bg-surface-container-lowest rounded-2xl p-6 flex flex-col relative group soft-shadow border border-surface-container-high" data-gallery data-tag={product.tag}>
+          <div class="aspect-4/5 w-full bg-surface-variant mb-3 rounded-xl overflow-hidden relative">
+            <img
+              class="gallery-main-img w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              alt={product.name}
+              src={product.images[0]}
+            />
+          </div>
+
+          {product.images.length > 1 && (
+            <div class="flex gap-2 mb-6">
+              {product.images.map((src, i) => (
+                <button
+                  type="button"
+                  class="gallery-thumb w-12 h-12 rounded-lg overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 data-[active=true]:border-primary data-[active=true]:opacity-100 transition-all"
+                  data-src={src}
+                  data-active={i === 0 ? "true" : "false"}
+                  aria-label={`Xem ảnh ${i + 1} của ${product.name}`}
+                >
+                  <img class="w-full h-full object-cover" src={src} alt="" />
+                </button>
+              ))}
+            </div>
+          )}
+          {product.images.length <= 1 && <div class="mb-6" />}
+
+          <div class="flex justify-between items-start mb-2">
+            <span class="font-label-caps text-label-caps text-secondary bg-surface-container px-2 py-1 rounded">{product.tag}</span>
+            <span class="font-label-caps text-label-caps text-outline">{product.code}</span>
+          </div>
+          <h2 class="font-headline-sm text-headline-sm text-primary mb-2">{product.name}</h2>
+          <div class="font-label-caps text-label-caps text-outline flex flex-col gap-1 mb-4">
+            <span>{product.spec}</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mb-6 flex-grow">
+            {product.desc}
+          </p>
+          <div class="mb-6">
+            <span class="font-label-caps text-label-caps text-secondary mb-3 block">GỢI Ý ỨNG DỤNG</span>
+            <div class="flex gap-2">
+              {product.tags.map((t) => (
+                <div class="w-10 h-10 bg-surface border border-surface-container-high rounded-full flex items-center justify-center group/tooltip relative">
+                  <span class="material-symbols-outlined text-on-surface-variant text-[18px]">{t.icon}</span>
+                  <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-xs px-2 py-1 rounded opacity-0 group-hover/tooltip:opacity-100 transition-opacity whitespace-nowrap">{t.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <ColorSwatches codes={product.colors ?? []} />
+          <a
+            class="inline-flex items-center justify-center w-full py-3 bg-surface-container text-primary font-label-caps text-label-caps rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors duration-300"
+            href="https://zalo.me/84869927688"
+            target="_blank"
+            rel="noopener noreferrer"
+          >HỎI GIÁ QUA ZALO</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Chuyển ảnh chính khi bấm vào thumbnail (bấm 1 lần cho toàn trang, áp dụng cho mọi thẻ sản phẩm)
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".gallery-thumb");
+    if (!btn) return;
+
+    const gallery = btn.closest<HTMLElement>("[data-gallery]");
+    const mainImg = gallery?.querySelector<HTMLImageElement>(".gallery-main-img");
+    const src = btn.dataset.src;
+    if (!gallery || !mainImg || !src) return;
+
+    mainImg.src = src;
+    gallery.querySelectorAll<HTMLButtonElement>(".gallery-thumb").forEach((t) => {
+      t.dataset.active = t === btn ? "true" : "false";
+    });
+  });
+
+  // Lọc sản phẩm theo danh mục khi bấm nút filter
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".js-filter-btn");
+    if (!btn) return;
+
+    const bar = btn.closest<HTMLElement>("[data-filter-bar]");
+    const grid = document.querySelector<HTMLElement>("[data-filter-grid]");
+    const emptyMsg = document.querySelector<HTMLElement>(".js-filter-empty");
+    if (!bar || !grid) return;
+
+    bar.querySelectorAll<HTMLButtonElement>(".js-filter-btn").forEach((b) => {
+      b.dataset.active = b === btn ? "true" : "false";
+    });
+
+    const filter = btn.dataset.filter;
+    let visibleCount = 0;
+    grid.querySelectorAll<HTMLElement>(".js-product-card").forEach((card) => {
+      const match = filter === "TẤT CẢ" || card.dataset.tag === filter;
+      card.classList.toggle("hidden", !match);
+      if (match) visibleCount++;
+    });
+
+    emptyMsg?.classList.toggle("hidden", visibleCount > 0);
+  });
+</script>

@@ -1,0 +1,32 @@
+---
+import { getColor } from "../data/colors";
+
+interface Props {
+  codes: string[];
+  zaloUrl?: string;
+}
+const { codes, zaloUrl = "https://zalo.me/84869927688" } = Astro.props;
+const swatches = codes.map(getColor).filter((c): c is NonNullable<typeof c> => Boolean(c));
+---
+
+{swatches.length > 0 && (
+  <div class="mb-6">
+    <span class="font-label-caps text-label-caps text-secondary mb-3 block">MÀU SẮC KHÁC</span>
+    <div class="flex flex-wrap gap-2">
+      {swatches.map((c) => (
+        <a
+          href={zaloUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/swatch relative w-8 h-8 rounded-full border border-surface-container-high shadow-sm hover:scale-110 hover:border-primary transition-all duration-200"
+          style={`background-color:${c.hex}`}
+          aria-label={`Hỏi Zalo về màu ${c.name}`}
+        >
+          <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-xs px-2 py-1 rounded opacity-0 group-hover/swatch:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            {c.name} · Hỏi Zalo
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+)}

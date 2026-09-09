@@ -1,0 +1,45 @@
+---
+interface Props {
+  current: "home" | "about" | "products" | "contact";
+}
+const { current } = Astro.props;
+
+const links = [
+  { href: "/", label: "Trang chủ", key: "home" },
+  { href: "/gioi-thieu", label: "Giới thiệu", key: "about" },
+  { href: "/san-pham", label: "Sản phẩm", key: "products" },
+  { href: "/lien-he", label: "Liên hệ", key: "contact" },
+] as const;
+---
+
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+  <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20 py-4">
+    <a href="/" class="flex items-center">
+      <img
+        src="/images/logo/hung-thuan-logo.png"
+        alt="HƯNG THUẬN Vải & Ren"
+        class="h-16 w-auto object-contain"
+      />
+    </a>
+    <nav class="hidden md:flex gap-8">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "font-body-md text-body-md tracking-wide transition-all duration-300",
+            current === link.key
+              ? "text-primary border-b-2 border-primary pb-1"
+              : "text-secondary hover:text-primary",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="flex items-center gap-4 text-primary cursor-pointer active:opacity-80 active:scale-95 transition-transform">
+      <span class="material-symbols-outlined">shopping_bag</span>
+      <span class="material-symbols-outlined">favorite</span>
+      <span class="material-symbols-outlined">person</span>
+    </div>
+  </div>
+</header>
