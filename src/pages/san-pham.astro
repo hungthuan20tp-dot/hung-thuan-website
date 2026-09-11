@@ -178,9 +178,37 @@ const products = [
 ];
 
 const filters = ["TẤT CẢ", "REN", "LỤA", "LINEN", "GẤM", "THUN", "VOAN", "TWEED", "KAKI"];
+
+const productListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: products.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Product",
+      sku: p.code,
+      name: p.name,
+      description: p.desc,
+      category: p.tag,
+      image: new URL(p.images[0], Astro.site).toString(),
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "VND",
+        availability: "https://schema.org/InStock",
+        url: new URL("/san-pham", Astro.site).toString(),
+      },
+    },
+  })),
+};
 ---
 
-<Layout title="HƯNG THUẬN - Sản phẩm" current="products">
+<Layout
+  title="HƯNG THUẬN - Sản phẩm"
+  description="Kho hàng vải sỉ & lẻ Hưng Thuận — ren, lụa, linen cao cấp. Xem mẫu và hỏi giá trực tiếp qua Zalo."
+  current="products"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(productListJsonLd)} />
   <div class="max-w-max-width mx-auto w-full px-margin-mobile md:px-margin-desktop py-32">
     <header class="mb-16 text-center">
       <h1 class="font-display-lg text-display-lg text-primary mb-4">Kho hàng sỉ &amp; lẻ</h1>
