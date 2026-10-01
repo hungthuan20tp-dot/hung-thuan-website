@@ -45,6 +45,22 @@ export const colorPalette: SwatchColor[] = [
   { code: "29", name: "Kem vàng / Champagne", hex: "#f3ede0" },
   { code: "30", name: "Bạc", hex: "#c5c5c9" },
   { code: "31", name: "Xanh ngọc", hex: "#1f6b53" },
+  // Bảng màu LUA-01 (Lụa ánh) — lấy mẫu từ color card chính thức của cửa hàng.
+  { code: "32", name: "Xám bạc", hex: "#d4d3d9" },
+  { code: "33", name: "Nâu taupe", hex: "#927f70" },
+  { code: "34", name: "Trắng ngà 2", hex: "#d9d4d2" },
+  { code: "35", name: "Xanh xám nhạt", hex: "#bfcdd4" },
+  { code: "36", name: "Đỏ mận 2", hex: "#76212f" },
+  { code: "37", name: "Hồng phấn 2", hex: "#ead4d3" },
+  { code: "38", name: "Kem ngà 2", hex: "#f1ecdf" },
+  { code: "39", name: "Nâu caramel đậm", hex: "#805a3d" },
+  { code: "40", name: "Đen 2", hex: "#232325" },
+  { code: "41", name: "Kem vàng nhạt", hex: "#f5efd5" },
+  { code: "42", name: "Xanh navy 2", hex: "#282a3b" },
+  { code: "43", name: "Hồng xám nhạt", hex: "#e0d7da" },
+  { code: "44", name: "Nâu caramel nhạt", hex: "#dab48f" },
+  { code: "45", name: "Nâu cà phê đậm", hex: "#4e2f1e" },
+  { code: "46", name: "Đồng ánh kim", hex: "#5e1902" },
 ];
 
 export function getColor(code: string): SwatchColor | undefined {
