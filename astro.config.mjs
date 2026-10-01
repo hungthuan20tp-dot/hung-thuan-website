@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://hung-thuan-website.vercel.app',
+  site: 'https://vaihungthuan.vn',
 
   vite: {
     plugins: [tailwindcss()]
