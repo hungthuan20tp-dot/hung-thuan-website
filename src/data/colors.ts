@@ -61,6 +61,9 @@ export const colorPalette: SwatchColor[] = [
   { code: "44", name: "Nâu caramel nhạt", hex: "#dab48f" },
   { code: "45", name: "Nâu cà phê đậm", hex: "#4e2f1e" },
   { code: "46", name: "Đồng ánh kim", hex: "#5e1902" },
+  // Bảng màu GAM-01 (Gấm hoa) — lấy mẫu từ ảnh 4 màu; đỏ dùng lại mã 21, kem dùng lại mã 01.
+  { code: "47", name: "Vàng mù tạt", hex: "#c19037" },
+  { code: "48", name: "Xanh sage", hex: "#a2a495" },
 ];
 
 export function getColor(code: string): SwatchColor | undefined {
