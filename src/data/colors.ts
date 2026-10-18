@@ -73,6 +73,15 @@ export const colorPalette: SwatchColor[] = [
   { code: "54", name: "Xanh lam nhạt", hex: "#c5d2ec" },
   { code: "55", name: "Hồng cam nhạt", hex: "#f3b5ac" },
   { code: "56", name: "Xanh rêu", hex: "#97a876" },
+  // Bảng màu THUN-01 (Thun nhung hoa văn nổi) — ước lượng theo mắt từ color card nhà cung cấp (số 01-12); màu đã có thì dùng lại mã cũ.
+  { code: "57", name: "Xanh lá nhạt", hex: "#d3dcb0" },
+  { code: "58", name: "Kem đào", hex: "#ecd9c6" },
+  { code: "59", name: "Tím nhạt", hex: "#dcd3e4" },
+  { code: "60", name: "Hồng tím", hex: "#c797ad" },
+  { code: "61", name: "Xanh lam bột", hex: "#a5c6d8" },
+  { code: "62", name: "Xám rêu", hex: "#7d8a80" },
+  { code: "63", name: "Nâu caramel vàng", hex: "#b0864a" },
+  { code: "64", name: "Tím than", hex: "#2e2440" },
 ];
 
 export function getColor(code: string): SwatchColor | undefined {
