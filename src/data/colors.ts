@@ -82,6 +82,8 @@ export const colorPalette: SwatchColor[] = [
   { code: "62", name: "Xám rêu", hex: "#7d8a80" },
   { code: "63", name: "Nâu caramel vàng", hex: "#b0864a" },
   { code: "64", name: "Tím than", hex: "#2e2440" },
+  { code: "65", name: "Hồng san hô nhạt", hex: "#e8959d" },
+  { code: "66", name: "Vàng chanh", hex: "#d8dc6a" },
 ];
 
 export function getColor(code: string): SwatchColor | undefined {
